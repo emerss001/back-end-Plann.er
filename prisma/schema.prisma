@@ -41,8 +41,7 @@ model Activity {
   occurs_at DateTime
   trip_id   String
 
-  tripId String
-  trip   Trip   @relation(fields: [tripId], references: [id])
+  trip   Trip   @relation(fields: [trip_id], references: [id])
 
   @@map("activities")
 }
