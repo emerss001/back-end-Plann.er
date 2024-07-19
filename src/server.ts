@@ -13,6 +13,7 @@ import { createLink } from "./routes/links/create-link";
 import { getLinks } from "./routes/links/get-links";
 import { getParticipants } from "./routes/participants/get-participants";
 import { createInvite } from "./routes/invites/create-invites";
+import { updateTrip } from "./routes/trips/update-trip";
 
 const app = fastify();
 
@@ -26,6 +27,7 @@ app.setSerializerCompiler(serializerCompiler);
 // Rotas de trips
 app.register(createTrip);
 app.register(confirmTrip);
+app.register(updateTrip);
 
 // Rotas de atividades
 app.register(createActivity);
@@ -35,11 +37,11 @@ app.register(getActivity);
 app.register(createLink);
 app.register(getLinks);
 
-// Rotas de participantes
+// Rotas de participants
 app.register(confirmParticipant);
 app.register(getParticipants);
 
-// Rotas de convite
+// Rotas de invite
 app.register(createInvite);
 
 app.listen({ port: 3333 }).then(() => {
