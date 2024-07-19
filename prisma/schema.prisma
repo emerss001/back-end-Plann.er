@@ -50,8 +50,8 @@ model Link {
   id     String @id @default(uuid())
   title  String
   url    String
-  tripId String
-  trip   Trip   @relation(fields: [tripId], references: [id])
+  trip_id String
+  trip   Trip   @relation(fields: [trip_id], references: [id])
 
   @@map("links")
 }
