@@ -6,11 +6,12 @@ import {
   validatorCompiler,
 } from "fastify-type-provider-zod";
 import { confirmTrip } from "./routes/trips/confirm-trip";
-import { confirmParticipant } from "./routes/confirm-participant";
+import { confirmParticipant } from "./routes/participants/confirm-participant";
 import { createActivity } from "./routes/activities/create-activity";
 import { getActivity } from "./routes/activities/get-activities";
 import { createLink } from "./routes/links/create-link";
 import { getLinks } from "./routes/links/get-links";
+import { getParticipants } from "./routes/participants/get-participants";
 
 const app = fastify();
 
@@ -21,13 +22,21 @@ app.register(cors, {
 app.setValidatorCompiler(validatorCompiler);
 app.setSerializerCompiler(serializerCompiler);
 
+// Rotas de trips
 app.register(createTrip);
 app.register(confirmTrip);
-app.register(confirmParticipant);
+
+// Rotas de atividades
 app.register(createActivity);
 app.register(getActivity);
+
+// Rotas de links
 app.register(createLink);
 app.register(getLinks);
+
+// Rotas de participantes
+app.register(confirmParticipant);
+app.register(getParticipants);
 
 app.listen({ port: 3333 }).then(() => {
   console.log("Server running");
