@@ -14,6 +14,7 @@ import { getLinks } from "./routes/links/get-links";
 import { getParticipants } from "./routes/participants/get-participants";
 import { createInvite } from "./routes/invites/create-invites";
 import { updateTrip } from "./routes/trips/update-trip";
+import { getTripDetails } from "./routes/trips/get-trips-details";
 
 const app = fastify();
 
@@ -28,6 +29,7 @@ app.setSerializerCompiler(serializerCompiler);
 app.register(createTrip);
 app.register(confirmTrip);
 app.register(updateTrip);
+app.register(getTripDetails);
 
 // Rotas de atividades
 app.register(createActivity);
