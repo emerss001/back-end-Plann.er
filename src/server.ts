@@ -15,6 +15,7 @@ import { getParticipants } from "./routes/participants/get-participants";
 import { createInvite } from "./routes/invites/create-invites";
 import { updateTrip } from "./routes/trips/update-trip";
 import { getTripDetails } from "./routes/trips/get-trips-details";
+import { getParticipant } from "./routes/participants/get-participant";
 
 const app = fastify();
 
@@ -42,6 +43,7 @@ app.register(getLinks);
 // Rotas de participants
 app.register(confirmParticipant);
 app.register(getParticipants);
+app.register(getParticipant);
 
 // Rotas de invite
 app.register(createInvite);
