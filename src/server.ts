@@ -52,6 +52,8 @@ app.register(getParticipant);
 // Rotas de invite
 app.register(createInvite);
 
-app.listen({ port: env.PORT ? Number(process.env.PORT) : 3333 }).then(() => {
-  console.log("Server running");
-});
+app
+  .listen({ port: process.env.PORT ? Number(process.env.PORT) : 3333 })
+  .then(() => {
+    console.log("Server running");
+  });
