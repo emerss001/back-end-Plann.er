@@ -5,6 +5,7 @@ import { prisma } from "../../lib/prisma";
 import nodemailer from "nodemailer";
 import { getMailClient } from "../../lib/mail";
 import { dayjs } from "../../lib/dayjs";
+import { ClientError } from "../../error/client-erro";
 
 export async function createTrip(app: FastifyInstance) {
   app.withTypeProvider<ZodTypeProvider>().post(
@@ -32,11 +33,11 @@ export async function createTrip(app: FastifyInstance) {
       } = request.body;
 
       if (dayjs(starts_at).isBefore(new Date())) {
-        throw new Error("Data de início de viagem inválida.");
+        throw new ClientError("Data de início de viagem inválida.");
       }
 
       if (dayjs(ends_at).isBefore(starts_at)) {
-        throw new Error("Data de final de viagem inválida.");
+        throw new ClientError("Data de final de viagem inválida.");
       }
 
       const trip = await prisma.trip.create({
