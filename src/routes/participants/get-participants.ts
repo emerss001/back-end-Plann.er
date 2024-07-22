@@ -28,6 +28,9 @@ export async function getParticipants(app: FastifyInstance) {
               email: true,
               is_confirmed: true,
             },
+            orderBy: {
+              name: "desc",
+            },
           },
         },
       });
