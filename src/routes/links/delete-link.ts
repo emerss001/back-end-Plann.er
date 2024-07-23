@@ -23,7 +23,7 @@ export async function deleteLink(app: FastifyInstance) {
           trip_id: tripId,
         },
       });
-      reply.redirect(`/trips/${tripId}/`).send("ok");
+      reply.redirect(`/trips/${tripId}`).send("ok");
     }
   );
 }
