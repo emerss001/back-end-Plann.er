@@ -18,6 +18,7 @@ import { getTripDetails } from "./routes/trips/get-trips-details";
 import { getParticipant } from "./routes/participants/get-participant";
 import { errorHandler } from "./error-handler";
 import { env } from "./env";
+import { deleteLink } from "./routes/links/delete-link";
 
 const app = fastify();
 
@@ -43,6 +44,7 @@ app.register(getActivity);
 // Rotas de links
 app.register(createLink);
 app.register(getLinks);
+app.register(deleteLink);
 
 // Rotas de participants
 app.register(confirmParticipant);
