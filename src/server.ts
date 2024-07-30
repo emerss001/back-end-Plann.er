@@ -19,6 +19,7 @@ import { getParticipant } from "./routes/participants/get-participant";
 import { errorHandler } from "./error-handler";
 import { env } from "./env";
 import { deleteLink } from "./routes/links/delete-link";
+import { removeParticipant } from "./routes/participants/remove-participants";
 
 const app = fastify();
 
@@ -50,6 +51,7 @@ app.register(deleteLink);
 app.register(confirmParticipant);
 app.register(getParticipants);
 app.register(getParticipant);
+app.register(removeParticipant);
 
 // Rotas de invite
 app.register(createInvite);
