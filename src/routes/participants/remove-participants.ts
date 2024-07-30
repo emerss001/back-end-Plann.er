@@ -5,20 +5,20 @@ import { prisma } from "../../lib/prisma";
 
 export async function removeParticipant(app: FastifyInstance) {
   app.withTypeProvider<ZodTypeProvider>().delete(
-    "/participants/:participantId/remove",
+    "/trips/:tripId/participants/remove",
     {
       schema: {
-        params: z.object({
-          participantId: z.string().uuid(),
+        body: z.object({
+          participantsId: z.string().uuid(),
         }),
       },
     },
     async (request, reply) => {
-      const { participantId } = request.params;
+      const { participantsId } = request.body;
 
-      await prisma.participant.delete({
+      await prisma.participant.deleteMany({
         where: {
-          id: participantId,
+          id: participantsId,
         },
       });
 
