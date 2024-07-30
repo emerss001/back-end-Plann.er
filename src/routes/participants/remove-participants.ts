@@ -16,7 +16,6 @@ export async function removeParticipant(app: FastifyInstance) {
     },
     async (request, reply) => {
       const { participantsId } = request.body;
-      const participantsRemoved = participantsId.map((id) => ({ id }));
 
       await prisma.participant.deleteMany({
         where: {
@@ -26,7 +25,7 @@ export async function removeParticipant(app: FastifyInstance) {
         },
       });
 
-      reply.send("removed");
+      reply.status(200).send("removed");
     }
   );
 }
